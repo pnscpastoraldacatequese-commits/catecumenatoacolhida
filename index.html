@@ -16,13 +16,13 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 text-gray-900">
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // Componente de Ícone Customizado para simplificar o uso do Lucide no HTML
+        // Componente de Ícone Customizado
         const Icon = ({ name, className, size = 24 }) => {
             useEffect(() => {
                 if (window.lucide) {
@@ -92,18 +92,43 @@
 
             return (
                 <div className="min-h-screen p-4 md:p-8">
-                    <div className="max-w-5xl mx-auto">
-                        <header className="text-center mb-12">
-                            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Itinerário da Iniciação Cristã</h1>
-                            <p className="text-lg text-gray-600 italic">Paralelo Bíblico: O Encontro de Zaqueu (Lc 19, 1-10)</p>
-                            <div className="mt-4 flex justify-center items-center gap-2 text-sm text-gray-500">
-                                <Icon name="map-pin" size={16} />
-                                <span>Arquidiocese de Curitiba • Catecumenato</span>
+                    <div className="max-w-6xl mx-auto">
+                        
+                        {/* Novo Cabeçalho com Logos nas Laterais */}
+                        <header className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 pb-8 border-b border-gray-200">
+                            {/* Logo Esquerda - Paróquia */}
+                            <img 
+                                src="Logo Paróquia.jpg" 
+                                alt="Logo Paróquia" 
+                                className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
+                                onError={(e) => { e.target.src='https://via.placeholder.com/120?text=Paroquia'; }}
+                            />
+
+                            {/* Título Central */}
+                            <div className="text-center flex-1 px-4">
+                                <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 leading-tight">
+                                    Itinerário da Iniciação Cristã
+                                </h1>
+                                <p className="text-lg text-blue-700 italic font-semibold mb-2">
+                                    Paralelo Bíblico: O Encontro de Zaqueu (Lc 19, 1-10)
+                                </p>
+                                <div className="flex justify-center items-center gap-2 text-sm text-gray-500 font-medium">
+                                    <Icon name="map-pin" size={16} className="text-red-500" />
+                                    <span>Arquidiocese de Curitiba • Catecumenato</span>
+                                </div>
                             </div>
+
+                            {/* Logo Direita - Catequese */}
+                            <img 
+                                src="Logo Catequese.jpg" 
+                                alt="Logo Catequese" 
+                                className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
+                                onError={(e) => { e.target.src='https://via.placeholder.com/120?text=Catequese'; }}
+                            />
                         </header>
 
                         {/* Linha do Tempo Desktop */}
-                        <div className="hidden md:flex justify-between items-start mb-16 relative">
+                        <div className="hidden md:flex justify-between items-start mb-16 relative px-10">
                             <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
                             {stages.map((stage, index) => (
                                 <div 
@@ -111,10 +136,10 @@
                                     className="relative z-10 flex flex-col items-center cursor-pointer group"
                                     onClick={() => setActiveStage(index)}
                                 >
-                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 transition-all duration-300 ${activeStage === index ? `${stage.accent} text-white scale-110 shadow-lg` : 'bg-white text-gray-400 border-gray-200'}`}>
+                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 transition-all duration-300 ${activeStage === index ? `${stage.accent} text-white scale-110 shadow-lg` : 'bg-white text-gray-400 border-gray-200 hover:border-gray-300'}`}>
                                         <Icon name={stage.icon} size={32} />
                                     </div>
-                                    <p className={`mt-4 font-bold text-xs text-center max-w-[120px] uppercase tracking-tighter ${activeStage === index ? 'text-gray-900' : 'text-gray-400'}`}>
+                                    <p className={`mt-4 font-bold text-xs text-center max-w-[120px] uppercase tracking-tighter ${activeStage === index ? 'text-gray-900 font-bold' : 'text-gray-400'}`}>
                                         {stage.title.split('. ')[1]}
                                     </p>
                                 </div>
@@ -128,7 +153,7 @@
                                     <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white ${stages[activeStage].accent}`}>
                                         {stages[activeStage].period}
                                     </span>
-                                    <h2 className={`text-2xl md:text-3xl font-bold mt-2 text-gray-800`}>
+                                    <h2 className="text-2xl md:text-3xl font-bold mt-2 text-gray-800">
                                         {stages[activeStage].title}
                                     </h2>
                                     <p className="text-lg text-gray-500 italic font-medium">{stages[activeStage].subtitle}</p>
@@ -176,22 +201,25 @@
                             <button 
                                 onClick={() => setActiveStage(prev => Math.max(0, prev - 1))}
                                 disabled={activeStage === 0}
-                                className={`px-4 py-2 rounded-lg font-bold transition ${activeStage === 0 ? 'bg-gray-200 text-gray-400' : 'bg-gray-800 text-white'}`}
+                                className={`px-4 py-2 rounded-lg font-bold transition ${activeStage === 0 ? 'bg-gray-200 text-gray-400' : 'bg-gray-800 text-white shadow-md'}`}
                             >
                                 Anterior
                             </button>
                             <button 
                                 onClick={() => setActiveStage(prev => Math.min(stages.length - 1, prev + 1))}
                                 disabled={activeStage === stages.length - 1}
-                                className={`px-4 py-2 rounded-lg font-bold transition ${activeStage === stages.length - 1 ? 'bg-gray-200 text-gray-400' : 'bg-gray-800 text-white'}`}
+                                className={`px-4 py-2 rounded-lg font-bold transition ${activeStage === stages.length - 1 ? 'bg-gray-200 text-gray-400' : 'bg-gray-800 text-white shadow-md'}`}
                             >
                                 Próximo
                             </button>
                         </div>
 
                         <footer className="mt-12 text-center text-gray-500 text-sm border-t border-gray-200 pt-8 mb-8">
-                            <p>“A Iniciação Cristã não é um curso, é uma experiência de encontro.”</p>
-                            <p className="mt-2 font-semibold">Inspirado em Lucas 19, 1-10 • Catecumenato Curitiba</p>
+                            <p className="mb-2 italic">“A Iniciação Cristã não é um curso, é uma experiência de encontro.”</p>
+                            <p className="font-semibold text-gray-700 uppercase tracking-wide">
+                                Paróquia Nossa Senhora da Conceição • Pastoral da Catequese
+                            </p>
+                            <p className="text-xs mt-1">Catecumenato de Adultos • Arquidiocese de Curitiba</p>
                         </footer>
                     </div>
                 </div>
@@ -203,3 +231,5 @@
     </script>
 </body>
 </html>
+</html>
+
