@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { BookOpen, Cross, Flame, Sun, ChevronRight, Info, MapPin, UserCheck, Home, Heart, Sparkles } from 'lucide-react';
 
-const ItinerarioRICA = () => {
+/**
+ * Componente Principal: App
+ * Este componente renderiza o itinerário da Iniciação Cristã (RICA)
+ * com paralelos bíblicos à história de Zaqueu.
+ */
+const App = () => {
   const [activeStage, setActiveStage] = useState(0);
 
   const stages = [
@@ -62,7 +67,7 @@ const ItinerarioRICA = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8 font-sans">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
+        {/* Cabeçalho */}
         <header className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Itinerário da Iniciação Cristã</h1>
           <p className="text-lg text-gray-600 italic">Paralelo Bíblico: O Encontro de Zaqueu (Lc 19, 1-10)</p>
@@ -72,7 +77,7 @@ const ItinerarioRICA = () => {
           </div>
         </header>
 
-        {/* Timeline Desktop View */}
+        {/* Linha do Tempo (Desktop) */}
         <div className="hidden md:flex justify-between items-start mb-16 relative">
           <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
           {stages.map((stage, index) => (
@@ -91,8 +96,8 @@ const ItinerarioRICA = () => {
           ))}
         </div>
 
-        {/* Info Card */}
-        <div className={`rounded-2xl border-l-8 p-6 md:p-10 shadow-xl transition-all duration-500 bg-white`}>
+        {/* Card de Informações */}
+        <div className="rounded-2xl border-l-8 p-6 md:p-10 shadow-xl transition-all duration-500 bg-white border-gray-200">
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 border-b border-gray-100 pb-6">
             <div>
               <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white ${stages[activeStage].accent}`}>
@@ -144,7 +149,7 @@ const ItinerarioRICA = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Navegação Mobile */}
         <div className="flex md:hidden justify-between mt-8">
           <button 
             onClick={() => setActiveStage(prev => Math.max(0, prev - 1))}
@@ -162,7 +167,7 @@ const ItinerarioRICA = () => {
           </button>
         </div>
 
-        {/* Footer/Legend */}
+        {/* Rodapé */}
         <footer className="mt-12 text-center text-gray-500 text-sm border-t border-gray-200 pt-8 mb-8">
           <p>“A Iniciação Cristã não é um curso, é uma experiência de encontro.”</p>
           <p className="mt-2 font-semibold">Inspirado em Lucas 19, 1-10 • Catecumenato Arquidiocese de Curitiba</p>
@@ -171,5 +176,8 @@ const ItinerarioRICA = () => {
     </div>
   );
 };
+
+export default App;
+
 
 export default ItinerarioRICA;
