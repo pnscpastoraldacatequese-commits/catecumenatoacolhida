@@ -94,15 +94,21 @@
                 <div className="min-h-screen p-4 md:p-8">
                     <div className="max-w-6xl mx-auto">
                         
-                        {/* Novo Cabeçalho com Logos nas Laterais */}
+                        {/* Cabeçalho Ajustado */}
                         <header className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 pb-8 border-b border-gray-200">
                             {/* Logo Esquerda - Paróquia */}
-                            <img 
-                                src="Logo Paróquia.jpg" 
-                                alt="Logo Paróquia" 
-                                className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
-                                onError={(e) => { e.target.src='https://via.placeholder.com/120?text=Paroquia'; }}
-                            />
+                            <div className="w-32 md:w-40 flex justify-center">
+                                <img 
+                                    src="logo-paroquia.jpg" 
+                                    alt="Logo Paróquia" 
+                                    className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
+                                    onError={(e) => { 
+                                        e.target.onerror = null; 
+                                        e.target.src='https://via.placeholder.com/150?text=Erro+Logo+Paroquia';
+                                        console.log("Erro ao carregar logo-paroquia.jpg");
+                                    }}
+                                />
+                            </div>
 
                             {/* Título Central */}
                             <div className="text-center flex-1 px-4">
@@ -119,12 +125,18 @@
                             </div>
 
                             {/* Logo Direita - Catequese */}
-                            <img 
-                                src="Logo Catequese.jpg" 
-                                alt="Logo Catequese" 
-                                className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
-                                onError={(e) => { e.target.src='https://via.placeholder.com/120?text=Catequese'; }}
-                            />
+                            <div className="w-32 md:w-40 flex justify-center">
+                                <img 
+                                    src="logo-catequese.jpg" 
+                                    alt="Logo Catequese" 
+                                    className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
+                                    onError={(e) => { 
+                                        e.target.onerror = null; 
+                                        e.target.src='https://via.placeholder.com/150?text=Erro+Logo+Catequese';
+                                        console.log("Erro ao carregar logo-catequese.jpg");
+                                    }}
+                                />
+                            </div>
                         </header>
 
                         {/* Linha do Tempo Desktop */}
@@ -231,5 +243,3 @@
     </script>
 </body>
 </html>
-</html>
-
