@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itinerário RICA - Arquidiocese de Curitiba</title>
+    <title>Itinerário RICA - Catecumenato 2026/2027</title>
     <!-- Scripts necessários para rodar React no navegador sem build -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -38,7 +38,7 @@
             const stages = [
                 {
                     title: "1. Pré-Catecumenato",
-                    subtitle: "Tempo do Primeiro Anúncio",
+                    subtitle: "Primeiro Anúncio, o Querigma",
                     period: "Evangelização e Primeiro Contato",
                     icon: "cross",
                     color: "bg-blue-100 border-blue-500 text-blue-800",
@@ -94,7 +94,7 @@
                 <div className="min-h-screen p-4 md:p-8">
                     <div className="max-w-6xl mx-auto">
                         
-                        {/* Cabeçalho Ajustado */}
+                        {/* Cabeçalho com Logos e Título Atualizado */}
                         <header className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 pb-8 border-b border-gray-200">
                             {/* Logo Esquerda - Paróquia */}
                             <div className="w-32 md:w-40 flex justify-center">
@@ -104,8 +104,7 @@
                                     className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
                                     onError={(e) => { 
                                         e.target.onerror = null; 
-                                        e.target.src='https://via.placeholder.com/150?text=Erro+Logo+Paroquia';
-                                        console.log("Erro ao carregar logo-paroquia.jpg");
+                                        e.target.src='https://via.placeholder.com/150?text=Logo+Paroquia';
                                     }}
                                 />
                             </div>
@@ -118,9 +117,9 @@
                                 <p className="text-lg text-blue-700 italic font-semibold mb-2">
                                     Paralelo Bíblico: O Encontro de Zaqueu (Lc 19, 1-10)
                                 </p>
-                                <div className="flex justify-center items-center gap-2 text-sm text-gray-500 font-medium">
-                                    <Icon name="map-pin" size={16} className="text-red-500" />
-                                    <span>Arquidiocese de Curitiba • Catecumenato</span>
+                                <div className="flex justify-center items-center gap-2 text-sm text-gray-600 font-bold bg-gray-100 px-5 py-1.5 rounded-full w-fit mx-auto shadow-sm border border-gray-200">
+                                    <Icon name="check-circle" size={16} className="text-green-600" />
+                                    <span>Catecumenato 2026/2027</span>
                                 </div>
                             </div>
 
@@ -132,8 +131,7 @@
                                     className="h-20 md:h-28 w-auto object-contain drop-shadow-sm"
                                     onError={(e) => { 
                                         e.target.onerror = null; 
-                                        e.target.src='https://via.placeholder.com/150?text=Erro+Logo+Catequese';
-                                        console.log("Erro ao carregar logo-catequese.jpg");
+                                        e.target.src='https://via.placeholder.com/150?text=Logo+Catequese';
                                     }}
                                 />
                             </div>
@@ -226,12 +224,12 @@
                             </button>
                         </div>
 
-                        <footer className="mt-12 text-center text-gray-500 text-sm border-t border-gray-200 pt-8 mb-8">
-                            <p className="mb-2 italic">“A Iniciação Cristã não é um curso, é uma experiência de encontro.”</p>
-                            <p className="font-semibold text-gray-700 uppercase tracking-wide">
-                                Paróquia Nossa Senhora da Conceição • Pastoral da Catequese
-                            </p>
-                            <p className="text-xs mt-1">Catecumenato de Adultos • Arquidiocese de Curitiba</p>
+                        {/* Rodapé Atualizado */}
+                        <footer className="mt-12 text-center text-gray-500 text-sm border-t border-gray-200 pt-8 mb-8 space-y-1">
+                            <p className="mb-4 italic text-gray-600">“A Iniciação Cristã não é um curso, é uma experiência de encontro.”</p>
+                            <p className="font-bold text-gray-700 uppercase tracking-widest text-base">Arquidiocese de Curitiba</p>
+                            <p className="font-bold text-gray-700 uppercase tracking-wide">Paróquia Nossa Senhora da Conceição</p>
+                            <p className="font-medium text-gray-600">Pastoral da Catequese</p>
                         </footer>
                     </div>
                 </div>
